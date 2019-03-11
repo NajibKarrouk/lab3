@@ -1,0 +1,18 @@
+﻿@model laboration3.Models.UserDetail
+
+@{
+    ViewData["Title"] = "UserSettings";
+}
+
+<h1>UserSettings</h1>
+
+<div>
+    <h4>Welcome, @Html.DisplayFor(model => model.Username)!</h4>
+    <hr />
+</div>
+<div>
+    @Html.ActionLink("Change My Settings", "UpdateUser", "User", new { id = Model.Id }, new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("Delete My Account", "DeleteUser", "User", new { id = Model.Id }, new { @class = "btn btn-outline-danger" })
+    <a class="btn btn-outline-info" asp-area="" asp-controller="Book" asp-action="Booklist">See All Books</a>
+</div>
+

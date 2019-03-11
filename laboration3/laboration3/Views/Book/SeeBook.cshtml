@@ -1,0 +1,51 @@
+﻿@model laboration3.Models.BookDetail
+
+@{
+    ViewData["Title"] = "SeeBook";
+}
+
+<h1>SeeBook</h1>
+
+<div>
+    <h4>BookDetail</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Usr_Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Usr_Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (ViewBag.error != "")
+    {
+        <p style="color: red;">@ViewBag.error</p>
+    }
+    <a asp-action="Booklist">Back to List</a>
+</div>

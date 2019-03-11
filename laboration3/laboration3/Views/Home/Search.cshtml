@@ -1,0 +1,55 @@
+﻿@model IEnumerable<laboration3.Models.BookDetail>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>The following books were found for search @ViewData["currentSearch"]:</h1>
+
+@if (ViewBag.error != "")
+{
+    <p style="color:red;">@ViewBag.error</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usr_Id)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usr_Id)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
