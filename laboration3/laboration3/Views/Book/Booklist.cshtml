@@ -1,0 +1,115 @@
+﻿@model IEnumerable<laboration3.Models.BookDetail>
+
+@{
+    ViewData["Title"] = "Booklist";
+}
+
+<h1>Booklist</h1>
+
+<p>
+    @Html.ActionLink("Create New Book", "NewBook", "Book")
+</p>
+
+<div class="form-group col-md-4">
+    <form asp-action="Booklist">
+        <div class="form-group">
+            <label for="Titel">Filtrera efter titel:</label>
+            <select class="form-control" id="Titel" name="Titel">
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Id">@Html.DisplayFor(modelItem => item.Title)</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Filtrera" class="btn btn-default" />
+        </div>
+    </form>
+</div>
+<div class="form-group col-md-4">
+    <form asp-action="OrderBooks">
+        <div class="form-group">
+            <label for="Order">Sortera efter:</label>
+            <select class="form-control" id="Order" name="Order">
+                <option value="@Html.DisplayNameFor(model => model.Title)">@Html.DisplayNameFor(model => model.Title)</option>
+                <option value="@Html.DisplayNameFor(model => model.Price)">@Html.DisplayNameFor(model => model.Price)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Sortera" class="btn btn-default" />
+        </div>
+    </form>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usr_Id)
+            </th>
+            <th>CRUD</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usr_Id)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditBook", "Book", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "SeeBook", "Book", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteBook", "Book", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+        @if (ViewBag.error != "")
+        {
+            <p style="color:red;">@ViewBag.error</p>
+        }
+        @if (ViewBag.antal > 0)
+        {
+            <p style="color:green;">@ViewBag.antal bok/böcker har blivit raderade</p>
+        }
+    </tbody>
+</table>
+<div style="margin-bottom: 40px;">
+    <a class="btn btn-outline-info" asp-area="" asp-controller="User" asp-action="UserSettings">Back To Settings</a>
+</div>
+<h2>Hittar du inte det du letar efter?</h2>
+<div class="form-group col-md-4">
+    <form asp-action="SearchedList" method="get">
+        <div class="form-group">
+            <label for="Titel">Sök efter bok:</label>
+            <input type="text" class="form-control" id="s" name="s" placeholder="" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Sök" class="btn btn-dark" />
+        </div>
+    </form>
+</div>

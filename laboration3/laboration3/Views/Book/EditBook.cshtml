@@ -1,0 +1,44 @@
+﻿@model laboration3.Models.BookDetail
+
+@{
+    ViewData["Title"] = "EditBook";
+}
+
+<h1>EditBook</h1>
+
+<h4>BookDetail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditBook">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @if (ViewBag.error != "")
+    {
+        <p style="color:red;">@ViewBag.error</p>
+    }
+    <a asp-action="Booklist">Back to List</a>
+</div>
+
